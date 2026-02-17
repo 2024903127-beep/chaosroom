@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chaos Room: Shadow Cycle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="lobby-body">
+  <main class="lobby-card">
+    <h1>CHAOS ROOM</h1>
+    <p class="sub">SHADOW CYCLE</p>
+
+    <label for="nickname">Nickname</label>
+    <input id="nickname" maxlength="20" placeholder="Enter nickname" />
+
+    <div class="actions-row">
+      <button id="createBtn" class="primary">Create Room</button>
+    </div>
+
+    <label for="roomCode">Room Code</label>
+    <input id="roomCode" maxlength="6" placeholder="AB12CD" />
+    <button id="joinBtn">Join Room</button>
+
+    <p id="error" class="error"></p>
+  </main>
+
+  <script>
+    const nickname = document.getElementById("nickname");
+    const roomCode = document.getElementById("roomCode");
+    const createBtn = document.getElementById("createBtn");
+    const joinBtn = document.getElementById("joinBtn");
+    const errorEl = document.getElementById("error");
+
+    function toGame(mode) {
+      const name = nickname.value.trim();
+      const code = roomCode.value.trim().toUpperCase();
+      if (!name) {
+        errorEl.textContent = "Nickname is required.";
+        return;
+      }
+      if (mode === "join" && !code) {
+        errorEl.textContent = "Room code is required to join.";
+        return;
+      }
+
+      const params = new URLSearchParams({ mode, name });
+      if (code) params.set("room", code);
+      location.href = `game.html?${params.toString()}`;
+    }
+
+    createBtn.addEventListener("click", () => toGame("create"));
+    joinBtn.addEventListener("click", () => toGame("join"));
+  </script>
+</body>
+</html>
