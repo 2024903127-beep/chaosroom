@@ -1,0 +1,17 @@
+{
+  "name": "chaos-room-shadow-cycle",
+  "version": "1.0.0",
+  "description": "Server-authoritative real-time multiplayer web game",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.8.1"
+  }
+}

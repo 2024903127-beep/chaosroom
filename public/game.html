@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chaos Room Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="game-body">
+  <div class="top-bar">
+    <div class="pill" id="roomLabel">Room: --</div>
+    <div class="pill" id="roundLabel">Round: LOBBY</div>
+    <div class="pill" id="healthLabel">HP: 100</div>
+    <div class="pill" id="objectiveLabel">Objective: Survive</div>
+    <div class="pill hidden" id="saboteurLabel">SABOTEUR</div>
+    <button id="startBtn" class="primary hidden">Start Game</button>
+    <button id="audioBtn" class="pill audio-pill">Audio: ON</button>
+  </div>
+
+  <div id="cinematicBanner" class="cinematic-banner hidden"></div>
+  <div id="introOverlay" class="intro-overlay hidden">
+    <div class="intro-text" id="introText">3</div>
+  </div>
+  <div id="flashFx" class="flash-fx hidden"></div>
+
+  <canvas id="gameCanvas"></canvas>
+
+  <aside class="leaderboard">
+    <h3>Leaderboard</h3>
+    <div id="leaderboardList"></div>
+  </aside>
+
+  <aside class="event-feed" id="eventFeed"></aside>
+
+  <div class="mobile-controls" id="mobileControls">
+    <div class="joystick" id="joystickBase">
+      <div class="knob" id="joystickKnob"></div>
+    </div>
+    <div class="mobile-buttons">
+      <button id="dashBtn">Dash</button>
+      <button id="killBtn" class="hidden danger">Kill</button>
+    </div>
+  </div>
+
+  <div class="overlay hidden" id="voteOverlay">
+    <div class="modal">
+      <h2>Vote Phase</h2>
+      <p id="voteTimer">Ends in 10s</p>
+      <div id="voteTargets"></div>
+    </div>
+  </div>
+
+  <div class="overlay hidden" id="endOverlay">
+    <div class="modal">
+      <h2 id="winnerText">Winner</h2>
+      <div id="statsList"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="js/ui.js"></script>
+</body>
+</html>
